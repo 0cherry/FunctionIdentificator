@@ -59,6 +59,10 @@ teX = teX.reshape(-1, 28, 28)
 X = tf.placeholder("float", [None, 28, 28])
 Y = tf.placeholder("float", [None, 10])
 
+# print(mnist)
+# print(X)
+# print(X.shape)
+
 # get lstm_size and output 10 labels
 W = init_weights([lstm_size, 10])
 B = init_weights([10])
@@ -87,3 +91,4 @@ with tf.Session(config=session_conf) as sess:
 
         print(i, np.mean(np.argmax(teY[test_indices], axis=1) ==
                          sess.run(predict_op, feed_dict={X: teX[test_indices]})))
+        print(sess.run(predict_op, feed_dict={X: teX[test_indices]}))
